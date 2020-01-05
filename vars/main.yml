@@ -1,0 +1,48 @@
+---
+#- name: Add Admins ip to all servers
+#  hosts: all
+#  become: yes
+
+  admins_ip:
+    192.168.7.4: v_ivanov
+    192.168.7.2: e_vaganov
+
+  user1_ip:
+    192.168.7.55: e_pack
+    192.168.7.66: e_kim
+
+
+
+
+#  vars: {
+#    admins_ip: {
+#      v_ivanov: 172.16.100.4,
+#      e_vaganov: 172.16.100.2}}
+
+
+#admins_ip: [172.16.100.2, 172.16.100.4]
+
+#admins_ip:
+#   - 172.16.100.2
+#   - 172.16.100.4
+#   - 172.16.100.7
+#   - 172.16.100.8
+#   - 172.16.100.10
+
+
+#e_vaganov: 172.16.100.2
+#v_ivanov: 172.16.100.4
+#s_seytimbetov: 172.16.100.7
+#i_lebedev:  172.16.100.8
+#e_vaganov_mobile:  172.16.100.10
+
+#admins_ip:
+#  - "172.16.100.2"
+#  - "172.16.100.4"
+#  - "172.16.100.7"
+
+#mysql config
+#mysql_host: "mysql_host"
+#mysql_db: app_name
+#mysql_user: sql_user
+#mysql_pass: sql_pass

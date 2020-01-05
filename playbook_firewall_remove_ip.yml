@@ -1,0 +1,21 @@
+---
+- name: Remove ip from all servers.
+  hosts: all
+  become: yes
+
+  vars_prompt:
+    - name: "remove_ip"
+      prompt: "Введите ip для удаления"
+
+  tasks:
+  - block:  ##-----For RedHat7------##
+    - name: Enable and start firewall
+      service: name=firewalld state=started enabled=yes
+
+    - name: Remove IP's
+      command: firewall-cmd --permanent --remove-rich-rule='rule family=ipv4 source address={{ remove_ip }} service name=ssh accept'
+
+    - name: Restart firewalld
+      command: firewall-cmd --reload
+
+    when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"

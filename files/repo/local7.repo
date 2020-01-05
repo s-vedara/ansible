@@ -1,0 +1,41 @@
+[rhel-7-server-extras-rpms]
+name=Red Hat Enterprise Linux Server Extras
+baseurl=http://192.168.7.106/rhel-7-repo/rhel-7-server-extras-rpms/
+gpgcheck=0
+enabled=1
+
+[rhel-7-server-optional-rpms]
+name=Red Hat Enterprise Linux Server Optional
+baseurl=http://192.168.7.106/rhel-7-repo/rhel-7-server-optional-rpms/
+gpgcheck=0
+enabled=1
+
+[rhel-7-server-rh-common-rpms]
+name=Red Hat Enterprise Linux Server RH Common 
+baseurl=http://192.168.7.106/rhel-7-repo/rhel-7-server-rh-common-rpms/
+gpgcheck=0
+enabled=1
+
+[rhel-7-server-rhn-tools-rpms]
+name=Red Hat Enterprise Linux Server RHN Tools
+baseurl=http://192.168.7.106/rhel-7-repo/rhel-7-server-rhn-tools-rpms/
+gpgcheck=0
+enabled=1
+
+[rhel-7-server-rpms]
+name=Red Hat Enterprise Linux Server
+baseurl=http://192.168.7.106/rhel-7-repo/rhel-7-server-rpms/
+gpgcheck=0
+enabled=1
+
+[rhel-7-server-supplementary-rpms]
+name=Red Hat Enterprise Linux Server Supplementary
+baseurl=http://192.168.7.106/rhel-7-repo/rhel-7-server-supplementary-rpms/
+gpgcheck=0
+enabled=1
+
+[rhel-7-server-thirdparty-oracle-java-rpms]
+name=Red Hat Enterprise Linux Server Thirdparty Oracle Java
+baseurl=http://192.168.7.106/rhel-7-repo/rhel-7-server-thirdparty-oracle-java-rpms/
+gpgcheck=0
+enabled=1

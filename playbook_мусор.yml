@@ -1,0 +1,56 @@
+---
+- name: Add repository to all servers
+  hosts: all
+  user: root
+
+  become: yes
+
+
+
+------------------------------------------------
+  - name: Include vars from local-configure.yml if found
+    include_vars: "{{ item }}"
+    with_first_found:
+     - local-configure.yml
+     - null.yml
+
+  - include: firewalls/debian-ufw.yml
+    when: ansible_os_family == 'Debian'
+
+  - include: firewalls/centos-firewalld.yml
+    when: ansible_os_family == 'RedHat'
+------------------------------------------
+
+
+  - name: Install SSH key
+    authorized_key:
+      user: root
+      state: present
+      manage_dir: true
+      key: "{{ lookup('file', '/home/ter/.ssh/id_rsa.pub') }} "
+
+-----------
+#  vars_files:
+#  - vars/global.yml
+-------
+#      loop:
+#       - "{{e_vaganov}}"
+#       - "{{v_ivanov}}"
+#       - "{{s_seytimbetov}}"
+#       - "{{i_lebedev}}"
+#       - "{{e_vaganov_mobile}}"
+------
+#   - name: Remove "ssh,dhcpv6-client" service
+#     command: firewall-cmd --permanent --zone=public --remove-service=dhcpv6-client
+#      #command: firewall-cmd --permanent --zone=public --remove-service=ssh
+
+---------
+работает
+#  vars:
+#    admins_ip:
+#      v_ivanov: 192.168.7.4
+#      e_vaganov: 192.168.7.2
+---------
+vars_files:
+  - [ "vars/foo.yml", "vars/bar.yml", "vars/default.yml" ]
+---------

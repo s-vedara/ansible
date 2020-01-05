@@ -1,0 +1,15 @@
+---
+- name: Test connection to my servers
+  hosts: all
+  become: yes
+
+  vars:
+    admins_ip:
+      v_ivanov: 192.168.7.4
+      e_vaganov: 192.168.7.2
+
+  tasks:
+  - name: Ansible dictionary loop Example
+    debug:
+      msg: "Пользователь {{ item.key }} его ip адрес  {{item.value}} "
+    with_dict: "{{ admins_ip }}"

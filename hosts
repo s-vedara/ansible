@@ -1,0 +1,19 @@
+
+[kubernetes_masters]
+master1 ansible_host=192.168.12.254
+
+[kubernetes_workers]
+worker1 ansible_host=192.168.12.253
+worker2 ansible_host=192.168.12.252
+
+
+
+[kubernetes_masters:vars]
+#ansible_port = 2022
+ansible_ssh_user=root
+ansible_ssh_private_key_file=./files/SSH_keys/1-main_key/id_rsa
+
+[kubernetes_workers:vars]
+#ansible_port = 2022
+ansible_ssh_user=root
+ansible_ssh_private_key_file=./files/SSH_keys/1-main_key/id_rsa

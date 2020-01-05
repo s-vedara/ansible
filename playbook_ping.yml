@@ -1,0 +1,12 @@
+---
+- name: Test connection to my servers
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Check Linux Version
+    debug:
+      msg: "The operating system is {{ ansible_os_family }} {{ansible_distribution_version}} ({{ansible_architecture}})"
+
+  - name: Ping test
+    ping:

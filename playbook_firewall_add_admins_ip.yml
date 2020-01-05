@@ -1,0 +1,29 @@
+---
+- name: Add Admins ip to all servers
+  hosts: all
+  become: yes
+
+  vars_files:
+   - ./vars/main.yml
+
+  tasks:
+  - name: Check and print Linux Version
+    debug: var=ansible_os_family, var=ansible_distribution_major_version
+
+  - block:  ##-----For RedHat7------##
+
+    - name: Enable and start firewall
+      service: name=firewalld state=started enabled=yes
+
+    - name: Allow Admins
+      command: firewall-cmd --permanent --zone=public --add-rich-rule 'rule family=ipv4 source address={{ item.key }} service name=ssh accept'
+      with_dict: "{{ admins_ip }}"
+
+    - name: Remove "ssh,dhcpv6-client" service
+      command: firewall-cmd --permanent --zone=public --remove-service=dhcpv6-client
+      #command: firewall-cmd --permanent --zone=public --remove-service=ssh
+
+    - name: Restart firewalld
+      command: firewall-cmd --reload
+
+    when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"

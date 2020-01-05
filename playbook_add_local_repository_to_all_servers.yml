@@ -1,0 +1,10 @@
+---
+- name: Add repository to all servers
+  hosts: all
+  become: yes
+
+  tasks:
+  - block:   ##=======For RedHat7=======##
+    - name: Copy file
+      copy: src=./files/repo/local7.repo dest=/etc/yum.repos.d
+    when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
